@@ -4,17 +4,17 @@ const candidato = {
   nome: "Luiz Felipe",
   area: "Front-End",
   habilidades: [
-    "javaScript",
+    "JavaScript",
     "GitHub",
     "Lógica de Programação",
-    "kanban",
+    "Kanban",
     "Python"
   ],
   experienciaMeses: 12
 
 };
 
-const vagas = [
+const vaga = [
   {
     id: 1,
     empresa: "Tecnologia TonyStark",
@@ -59,4 +59,67 @@ const vagas = [
   }
 ];
 
-console.log(vagas);
+//console.log(vaga);
+
+function calcularCompatibilidade(candidato,vaga) {
+  const habilidadesEncontradas = vaga.requisitos.filter((requisito) =>
+    candidato.habilidades.includes(requisito)
+);
+
+
+const habilidadesFaltantes = vaga.requisitos.filter((requisito) => 
+  !candidato.habilidades.includes(requisito)
+);
+
+
+const percentual = (habilidadesEncontradas.length / vaga.requisitos.length) * 100;
+return {
+  empresa: vaga.empresa,
+  cargo: vaga.cargo,
+  percentual: Math.round(percentual),
+  habilidadesEncontradas,
+  habilidadesFaltantes
+};
+
+}
+
+//const resultado = calcularCompatibilidade(candidato, vaga[0]);
+
+//console.log(resultado);
+
+//vaga.forEach((vagaAtual)=> {
+ // const resultado = calcularCompatibilidade(candidato, vagaAtual);
+  //console.log(resultado);
+//})
+
+function calcularCompatibilidade(candidato, vaga) {
+  const habilidadesEncontradas = vaga.requisitos.filter((requisito) =>
+  candidato.habilidades.includes(requisito)
+  );
+
+  const habilidadesFaltantes = vaga.requisitos.filter((requisito) =>
+  !candidato.habilidades.includes(requisito)
+  );
+
+  const percentual = 
+  (habilidadesEncontradas.length / vaga.requisitos.length) * 100;
+
+  return {
+    empresa: vaga.empresa,
+    cargo: vaga.cargo,
+    percentual: Math.round(percentual),
+    habilidadesEncontradas,
+    habilidadesFaltantes
+  };
+}
+
+// const resultado = calcularCompatibilidade(candidato, vaga[2]);
+// console.log (resultado);
+
+/* vaga.forEach((vagaAtual) => {
+  const resultado = calcularCompatibilidade (candidato,vagaAtual);
+console.log(resultado)
+});
+*/
+
+
