@@ -211,3 +211,45 @@ vagasComPOO.forEach((vaga) => {
   console.log(vaga.exibirResumo());
   console.log(vaga.exibirNivel());
 });
+
+const vagaEstagio = vagas.find((vaga)=>
+vaga.cargo.includes("Estágio")
+);
+
+console.log("============ RESULTADO ============");
+console.log(vagaEstagio);
+
+const atendeTodas = vagas[0].requisitos.every((requisitos) => 
+candidato.habilidades.includes(requisitos)
+);
+
+console.log("============= RESULTADO =============");
+console.log("Candidato atende todos requisitos da primeira vaga:", atendeTodas);
+
+
+function finalizarAnalise(nome, callback) {
+  console.log("Analise Finalizada")
+  callback(nome);
+}
+
+function mensagemFinal (nome) {
+  console.log(`${nome}, revise suas hablidades e continue evoluindo.`);
+}
+
+finalizarAnalise(candidato.nome, mensagemFinal);
+
+
+function criarContadorDeAnalises(){
+  let total = 0;
+
+  return function () {
+    total++;
+    return total;
+  };
+}
+
+const contarAnalises = criarContadorDeAnalises();
+
+console.log("============= ANÁLISES ===========");
+console.log("Análises feitas", contarAnalises());
+console.log("Análises feitas:", contarAnalises());
